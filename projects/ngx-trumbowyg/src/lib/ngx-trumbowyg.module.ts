@@ -1,10 +1,16 @@
-import { NgModule } from '@angular/core';
-import { NgxTrumbowygComponent } from './ngx-trumbowyg.component';
+import { NgModule, ModuleWithProviders } from '@angular/core';
+import { TrumbowygOptions } from './configs/trumbowyg-options';
+import { TRUMBOWYG_OPTIONS } from './configs/injection-token';
 
 @NgModule({
-  imports: [
-  ],
-  declarations: [NgxTrumbowygComponent],
-  exports: [NgxTrumbowygComponent]
+  declarations: [],
+  exports: []
 })
-export class NgxTrumbowygModule { }
+export class NgxTrumbowygModule {
+  static withConfig(options: TrumbowygOptions): ModuleWithProviders {
+    return {
+      ngModule: NgxTrumbowygModule,
+      providers: [{ provide: TRUMBOWYG_OPTIONS, useValue: options }]
+    };
+  }
+}
