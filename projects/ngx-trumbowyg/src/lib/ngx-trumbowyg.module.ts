@@ -1,10 +1,11 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { TrumbowygOptions } from './configs/trumbowyg-options';
 import { TRUMBOWYG_OPTIONS } from './configs/injection-token';
+import { EditorDirective } from './directive/editor.directive';
 
 @NgModule({
-  declarations: [],
-  exports: []
+  declarations: [EditorDirective],
+  exports: [EditorDirective]
 })
 export class NgxTrumbowygModule {
   static withConfig(options: TrumbowygOptions): ModuleWithProviders {

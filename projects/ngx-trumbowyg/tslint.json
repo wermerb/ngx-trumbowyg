@@ -1,17 +1,13 @@
 {
-    "extends": "../../tslint.json",
-    "rules": {
-        "directive-selector": [
-            true,
-            "attribute",
-            "lib",
-            "camelCase"
-        ],
-        "component-selector": [
-            true,
-            "element",
-            "lib",
-            "kebab-case"
-        ]
-    }
+  "extends": "../../tslint.json",
+  "rules": {
+    "directive-selector": [true, "attribute", "ngxTrumbowyg", "camelCase"],
+    "component-selector": [
+      true,
+      "element",
+      "ngxTrumbowyg",
+      "ngx-trumbowyg",
+      "kebab-case"
+    ]
+  }
 }
