@@ -15,6 +15,14 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-trumbowyg": [
+        "dist/ngx-trumbowyg"
+      ],
+      "ngx-trumbowyg/*": [
+        "dist/ngx-trumbowyg/*"
+      ]
+    }
   }
 }
