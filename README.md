@@ -1,4 +1,4 @@
-# NgxTrumbowyg [![npm version](https://badge.fury.io/js/trumbowyg-ngx.svg)](https://badge.fury.io/js/trumbowyg-ngx)
+# NgxTrumbowyg [![npm version](https://badge.fury.io/js/ngx-trumbowyg.svg)](https://badge.fury.io/js/ngx-trumbowyg)
 
 This an Angular 6 component and a directive wrapper for [Trumbowyg WYSIWYG editor](https://alex-d.github.io/Trumbowyg/).
 
