@@ -40,7 +40,7 @@ The component and the directive both supports `FormsModule` and `ReactiveFormsMo
 
 ```html
 <form [formGroup]="form">
-    <ngx-trumbowyg-editor formControlName="model"></trumbowyg-ngx-editor>
+    <ngx-trumbowyg-editor formControlName="model"></ngx-trumbowyg-editor>
     <textarea ngxTrumbowygEditor formControlName="model"></textarea>
 </form>
 ```
