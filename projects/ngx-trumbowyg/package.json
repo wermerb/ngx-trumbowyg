@@ -1,8 +1,31 @@
 {
   "name": "ngx-trumbowyg",
-  "version": "0.0.1",
+  "version": "6.0.0",
+  "license": "MIT",
   "peerDependencies": {
-    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
-    "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
-  }
+    "@angular/core": ">=5.0.0",
+    "@angular/forms": ">=5.0.0",
+    "jquery": "^3.2.1",
+    "trumbowyg": "^2.10.0"
+  },
+  "description": "This an Angular wrapper for [Trumbowyg WYSIWYG editor](https://alex-d.github.io/Trumbowyg/).",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wermerb/ngx-trumbowyg.git"
+  },
+  "keywords": [
+    "trumbowyg",
+    "Angular",
+    "Angular 2",
+    "Angular 5",
+    "Angular 6",
+    "Angular 2 WYSIWYG editor",
+    "Angular 5 WYSIWYG editor",
+    "Angular 6 WYSIWYG editor"
+  ],
+  "author": "Balázs Wermer <wermerb@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/wermerb/ngx-trumbowyg/issues"
+  },
+  "homepage": "https://github.com/wermerb/ngx-trumbowyg#readme"
 }
