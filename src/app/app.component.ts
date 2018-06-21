@@ -1,8 +1,8 @@
 import { Component, AfterViewInit, OnDestroy } from '@angular/core';
 import { Subscription, of } from 'rxjs';
-import { TrumbowygOptions } from 'projects/ngx-trumbowyg/src/lib/configs/trumbowyg-options';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { delay } from 'rxjs/operators';
+import { TrumbowygOptions } from 'ngx-trumbowyg/public_api';
 
 @Component({
   selector: 'app-root',

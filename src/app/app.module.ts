@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgxTrumbowygModule } from 'projects/ngx-trumbowyg/src/public_api';
+import { NgxTrumbowygModule } from 'ngx-trumbowyg';
 
 @NgModule({
   declarations: [AppComponent],

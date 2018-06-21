@@ -1,27 +1,96 @@
-# Editor
+# TrumbowygNgx [![npm version](https://badge.fury.io/js/trumbowyg-ngx.svg)](https://badge.fury.io/js/trumbowyg-ngx) [![bitHound Code](https://www.bithound.io/github/wermerb/trumbowyg-ngx/badges/code.svg)](https://www.bithound.io/github/wermerb/trumbowyg-ngx)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+This an Angular 6 component and a directive wrapper for [Trumbowyg WYSIWYG editor](https://alex-d.github.io/Trumbowyg/).
 
-## Development server
+## Getting started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1.  Run `npm install --save ngx-trumbowyg` or `yarn add ngx-trumbowyg`
 
-## Code scaffolding
+2.  Add trumbowyg and jquery to your scripts.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```json
+...
+"scripts": [
+        "./node_modules/jquery/dist/jquery.js",
+        "./node_modules/trumbowyg/dist/trumbowyg.min.js"
+      ]
+...
+```
 
-## Build
+3.  Import trumbowyg's css: `@import "~trumbowyg/dist/ui/trumbowyg.min.css";`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+4.  Copy trumbowyg's icons where ever you want.
 
-## Running unit tests
+    Unix ex: `cp node_modules/trumbowyg/dist/ui/icons.svg src/assets`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+    Windows ex: `xcopy /I /E node_modules/trumbowyg/dist/ui/icons.svg src/assetscd`
 
-## Running end-to-end tests
+## Usage
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+You can import `NgxTrumbowygModule` as many of your modules as you like.
 
-## Further help
+The component and the directive both supports `FormsModule` and `ReactiveFormsModule`.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```html
+<form #f="ngForm">
+    <ngx-trumbowyg-editor name="editor" [(ngModel)]="model"></ngx-trumbowyg-editor>
+    <textarea ngxTrumbowygEditor name="editorDirective" [(ngModel)]="model"></textarea>
+</form>
+```
+
+```html
+<form [formGroup]="form">
+    <ngx-trumbowyg-editor formControlName="model"></trumbowyg-ngx-editor>
+    <textarea ngxTrumbowygEditor formControlName="model"></textarea>
+</form>
+```
+
+It also supports common input attributes like:
+
+- disabled
+- required
+- placeholder
+
+There are two ways to provide configuration:
+
+1.  At module level
+
+```typescript
+@NgModule({
+    declarations: [...],
+    imports: [
+        ...
+        NgxTrumbowygModule.withConfig({
+            lang: 'hu',
+            svgPath: '/assets/ui/icons.svg',
+            removeformatPasted: true,
+            autogrow: true,
+            btns: [
+                ['formatting'],
+                ['strong', 'em', 'del'],
+                ['superscript', 'subscript'],
+                ['link'],
+                ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+                ['unorderedList', 'orderedList'],
+                ['horizontalRule'],
+                ['removeformat'],
+                ['fullscreen']
+            ]
+        })
+    ],
+    providers: [...],
+    bootstrap: [AppComponent]
+})
+export class AppModule {
+}
+```
+
+2.  You can pass a `TrumbowygOptions` via `[options]="options"` for both the component or the directive.
+
+Or you can use the combination of the two shown above.
+
+Lets assume you want to configure the `NgxTrumbowygModule` at module level, but at some point you want to create an editor with a different behaviour.
+
+In order to do that all you need to do is to pass an `TrumbowygOptions` via `<ngx-trumbowyg-editor [options]="options"></ngx-trumbowyg-editor>` that will override the global configuration for that particular editor instance.
+
+If you don't want to provide any configuration just import `NgxTrumbowygModule` and the default Trumbowyg's settings will be applied.
