@@ -1,9 +1,9 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgxTrumbowygModule } from 'ngx-trumbowyg';
 
 import { AppComponent } from './app.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgxTrumbowygModule } from 'ngx-trumbowyg';
 
 @NgModule({
   declarations: [AppComponent],

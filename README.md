@@ -75,7 +75,20 @@ There are two ways to provide configuration:
                 ['horizontalRule'],
                 ['removeformat'],
                 ['fullscreen']
-            ]
+            ],
+            // Some plugins, like emoji, has a prerequisite to run certain functions at certain DOM events.
+            // Please keep in mind that some events are protected for the sake of this library.
+            // Protected events: tbwinit, tbwchange, tbwfocus
+            // You can register events like this:
+            events: {
+              'input propertychange': () => {
+                // Setup emojify.js
+                emojify.setConfig({
+                    img_dir : '//cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/images/basic/',
+                });
+                emojify.run();
+              }
+            }
         })
     ],
     providers: [...],

@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "jquery": "^3.2.1",
-    "trumbowyg": "^2.10.0"
+    "trumbowyg": "2.11.0"
   },
   "devDependencies": {
     "@angular/common": "^6.0.3",

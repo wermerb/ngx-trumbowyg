@@ -13,4 +13,6 @@ export interface TrumbowygOptions {
   autogrowOnEnter?: boolean;
   plugins?: { [pluginName: string]: any };
   btnsDef?: { [buttonName: string]: CustomButton };
+
+  events?: { [eventName: string]: () => void };
 }

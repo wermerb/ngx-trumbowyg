@@ -4,8 +4,7 @@ import { TrumbowygOptions } from '../configs/trumbowyg-options';
 
 declare const $: any;
 
-export abstract class EditorBase
-  implements ControlValueAccessor, OnInit, AfterViewInit, OnDestroy {
+export abstract class EditorBase implements ControlValueAccessor, OnInit, AfterViewInit, OnDestroy {
   options: TrumbowygOptions | null;
 
   placeholder: string | null;
@@ -20,10 +19,12 @@ export abstract class EditorBase
 
   private _onTouch: () => void;
 
-  constructor(
-    protected editorControl: NgControl,
-    protected _config: TrumbowygOptions
-  ) {
+  constructor(protected editorControl: NgControl, protected _config: TrumbowygOptions) {
+    if (_config.events && (_config.events['tbwinit'] || _config.events['tbwchange'] || _config.events['tbwfocus'])) {
+      throw new Error(
+        'Forbidden event registration. These events are protected for the Ngx-Trumbowyg library: tbwinit, tbwchange, tbwfocus'
+      );
+    }
     editorControl.valueAccessor = this;
   }
 
@@ -34,12 +35,10 @@ export abstract class EditorBase
   }
 
   ngAfterViewInit(): void {
-    $(this._editor.nativeElement)
+    const editor = $(this._editor.nativeElement)
       .trumbowyg({ ...this._config, ...this.options })
       .on('tbwinit', () => {
-        $(this._editor.nativeElement).trumbowyg(
-          this._disabled ? 'disable' : 'enable'
-        );
+        $(this._editor.nativeElement).trumbowyg(this._disabled ? 'disable' : 'enable');
         this.setContent(this._initValue);
       })
       .on('tbwchange', () => {
@@ -48,6 +47,13 @@ export abstract class EditorBase
       .on('tbwfocus', () => {
         this._onTouch();
       });
+
+    if (this._config.events) {
+      const events = this._config.events;
+      Object.keys(events).forEach(eventName => {
+        editor.on(eventName, events[eventName]());
+      });
+    }
   }
 
   registerOnChange(fn: () => void): void {
