@@ -9,6 +9,7 @@ export interface TrumbowygOptions {
   semantic?: boolean;
   resetCss?: boolean;
   removeformatPasted?: boolean;
+  imageWidthModalEdit?: boolean;
   autogrow?: boolean;
   autogrowOnEnter?: boolean;
   plugins?: { [pluginName: string]: any };
