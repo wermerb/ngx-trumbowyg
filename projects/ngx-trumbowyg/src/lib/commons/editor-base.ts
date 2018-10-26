@@ -20,7 +20,11 @@ export abstract class EditorBase implements ControlValueAccessor, OnInit, AfterV
   private _onTouch: () => void;
 
   constructor(protected editorControl: NgControl, protected _config: TrumbowygOptions) {
-    if (_config.events && (_config.events['tbwinit'] || _config.events['tbwchange'] || _config.events['tbwfocus'])) {
+    if (
+      _config &&
+      _config.events &&
+      (_config.events['tbwinit'] || _config.events['tbwchange'] || _config.events['tbwfocus'])
+    ) {
       throw new Error(
         'Forbidden event registration. These events are protected for the Ngx-Trumbowyg library: tbwinit, tbwchange, tbwfocus'
       );
@@ -48,7 +52,7 @@ export abstract class EditorBase implements ControlValueAccessor, OnInit, AfterV
         this._onTouch();
       });
 
-    if (this._config.events) {
+    if (this._config && this._config.events) {
       const events = this._config.events;
       Object.keys(events).forEach(eventName => {
         editor.on(eventName, events[eventName]());
