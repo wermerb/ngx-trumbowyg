@@ -2,7 +2,7 @@ import { Component, AfterViewInit, OnDestroy } from '@angular/core';
 import { Subscription, of } from 'rxjs';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { delay } from 'rxjs/operators';
-import { TrumbowygOptions } from 'ngx-trumbowyg/public_api';
+import { TrumbowygOptions } from 'ngx-trumbowyg';
 
 @Component({
   selector: 'app-root',
@@ -42,7 +42,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   }
 
   toggleDisabled(): void {
-    const control = this.form.get("foo");
+    const control = this.form.get('foo');
     if (control.disabled) {
       control.enable();
     } else {

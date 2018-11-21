@@ -25,8 +25,10 @@ import { NgxTrumbowygModule } from 'ngx-trumbowyg';
         ['unorderedList', 'orderedList'],
         ['horizontalRule'],
         ['removeformat'],
-        ['fullscreen']
-      ]
+        ['fullscreen'],
+        ['insertImage']
+      ],
+      events: {}
     })
   ],
   providers: [],
