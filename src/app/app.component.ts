@@ -40,4 +40,13 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   ngOnDestroy(): void {
     this._sub.unsubscribe();
   }
+
+  toggleDisabled(): void {
+    const control = this.form.get("foo");
+    if (control.disabled) {
+      control.enable();
+    } else {
+      control.disable();
+    }
+  }
 }

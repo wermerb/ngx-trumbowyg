@@ -42,7 +42,7 @@ export abstract class EditorBase implements ControlValueAccessor, OnInit, AfterV
     const editor = $(this._editor.nativeElement)
       .trumbowyg({ ...this._config, ...this.options })
       .on('tbwinit', () => {
-        $(this._editor.nativeElement).trumbowyg(this._disabled ? 'disable' : 'enable');
+        this.setDisabledState(this._disabled);
         this.setContent(this._initValue);
       })
       .on('tbwchange', () => {
@@ -78,6 +78,10 @@ export abstract class EditorBase implements ControlValueAccessor, OnInit, AfterV
 
   setDisabledState(disabled: boolean): void {
     this._disabled = disabled;
+
+    if (this._editor) {
+      $(this._editor.nativeElement).trumbowyg(this._disabled ? 'disable' : 'enable');
+    }
   }
 
   ngOnDestroy(): void {

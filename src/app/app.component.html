@@ -1,5 +1,7 @@
 <h1>{{form.value | json}}</h1>
 
+<button (click)="toggleDisabled()">Toggle Form disabled</button>
+
 <form [formGroup]="form">
   <ngx-trumbowyg-editor id="editor" formControlName="foo"></ngx-trumbowyg-editor>
 </form>
